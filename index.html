@@ -1,104 +1,227 @@
 <!DOCTYPE html>
 <html lang="hi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#d35400">
-<meta name="description" content="पुरी यात्रा सेवा — ग्रुप टूर, होटल, धर्मशाला, किचन, गैस, बस और महाप्रसाद के लिए WhatsApp पूछताछ।">
-<link rel="manifest" href="manifest.json">
-<title>जय जगन्नाथ! पुरी यात्रा सेवा</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif}
-body{background:#f4f7f6;color:#263238;line-height:1.5}
-header{background:linear-gradient(135deg,#ff9933,#d35400);color:#fff;text-align:center;padding:34px 18px}
-header h1{font-size:clamp(1.7rem,5vw,2.4rem);margin-bottom:9px}
-header p{font-weight:650}
-.container{max-width:1000px;margin:24px auto;padding:0 15px}
-.intro,.booking-form,.service-card{background:#fff;border-radius:14px;box-shadow:0 4px 16px #00000012}
-.intro{padding:24px;text-align:center;margin-bottom:28px}
-h2{color:#b94c00}
-.intro h2,.booking-form h2{margin-bottom:12px}
-.section-title{text-align:center;margin:0 0 18px;color:#263238}
-.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:16px;margin-bottom:30px}
-.service-card{padding:21px;text-align:center;border-top:4px solid #ff9933}
-.service-card h3{margin-bottom:8px;font-size:1.18rem}
-.service-card p{color:#52606a}
-.booking-form{padding:clamp(18px,4vw,30px);margin-bottom:30px}
-.booking-form h2{text-align:center}
-.form-group{margin-bottom:17px}
-label{display:block;font-weight:700;margin-bottom:7px;color:#263238}
-input,textarea,select{width:100%;padding:12px;border:1px solid #cbd2d6;border-radius:7px;font-size:1rem;background:#fff}
-.checkbox-group{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;background:#f8f8f8;padding:14px;border:1px solid #ddd;border-radius:8px}
-.checkbox-item{display:flex;align-items:center;gap:8px}
-.checkbox-item input{width:auto;min-width:18px;height:18px}
-.checkbox-item label{margin:0;font-weight:600}
-.submit-btn,.install-btn{width:100%;border:0;border-radius:8px;padding:14px;font-size:1.08rem;font-weight:750;cursor:pointer}
-.submit-btn{background:#25a85a;color:#fff;margin-top:8px}
-.install-btn{background:#263238;color:#fff;margin-bottom:15px;display:none}
-.whatsapp-float{position:fixed;right:15px;bottom:15px;background:#25d366;color:#fff;padding:13px 17px;border-radius:50px;font-weight:750;text-decoration:none;box-shadow:0 4px 12px #0003;z-index:10}
-footer{text-align:center;padding:22px 15px;background:#263238;color:#fff;margin-top:25px}
-.small{font-size:.9rem;color:#68757d;text-align:center;margin-top:12px}
-@media(max-width:420px){.checkbox-group{grid-template-columns:1fr}.whatsapp-float{font-size:.9rem;padding:11px 14px}}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">जय जगन्नाथ! पुरी यात्रा सेवा | Puri Yatra Seva</title>
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff6600">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #f8f9fa; color: #333; line-height: 1.6; }
+        header { background: linear-gradient(135deg, #ff8c00, #ff4500); color: white; padding: 20px 15px; text-align: center; position: relative; }
+        .lang-switch { position: absolute; top: 15px; right: 15px; background: white; color: #ff4500; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        header h1 { font-size: 24px; margin-bottom: 8px; }
+        header p { font-size: 14px; opacity: 0.95; }
+        .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
+        .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #ff6600; }
+        .card h2 { font-size: 18px; color: #222; margin-bottom: 12px; }
+        .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
+        .feature-box { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; }
+        .feature-box h3 { font-size: 15px; color: #333; margin-bottom: 5px; }
+        .feature-box p { font-size: 12px; color: #666; }
+        .form-group { margin-bottom: 15px; }
+        .form-group label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: #444; }
+        .form-group input, .form-group select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; background: #fff; }
+        .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
+        .checkbox-label { font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
+        .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; text-align: center; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); margin-top: 20px; }
+        .footer { text-align: center; padding: 20px; font-size: 12px; color: #777; background: #222; color: #aaa; margin-top: 30px; }
+    </style>
 </head>
 <body>
-<header>
-  <h1>🙏 जय जगन्नाथ! पुरी यात्रा सेवा</h1>
-  <p>बड़े ग्रुप, बस यात्रा और परिवारों के लिए पुरी में ठहरने व भोजन की व्यवस्था</p>
-</header>
-<main class="container">
-  <section class="intro">
-    <h2>क्या आप बड़े ग्रुप या बस के साथ पुरी आ रहे हैं?</h2>
-    <p>कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे WhatsApp पर भेजने के लिए तैयार हो जाएगी। बुकिंग और उपलब्धता की पुष्टि बातचीत के बाद होगी।</p>
-  </section>
-  <h2 class="section-title">हमारी मुख्य सुविधाएँ</h2>
-  <section class="services-grid">
-    <article class="service-card"><h3>🏨 होटल और धर्मशाला</h3><p>बड़े समूहों के लिए हॉल या मंदिर/समुद्र के पास ठहरने के विकल्पों की जानकारी।</p></article>
-    <article class="service-card"><h3>🍳 ग्रुप किचन और गैस</h3><p>समूह के लिए बड़े बर्तन, गैस सिलेंडर, चूल्हा और किचन स्पेस की व्यवस्था के विकल्प।</p></article>
-    <article class="service-card"><h3>🚌 बस और ट्रैवलर गाड़ी</h3><p>पुरी स्टेशन से पिकअप तथा कोणार्क, चिलिका और भुवनेश्वर घूमने के लिए वाहन की पूछताछ।</p></article>
-    <article class="service-card"><h3>🍽️ महाप्रसाद और कैटरिंग</h3><p>श्री जगन्नाथ जी के महाप्रसाद या शुद्ध शाकाहारी भोजन के लिए पूछताछ करें।</p></article>
-  </section>
-  <section class="booking-form">
-    <h2>निःशुल्क पूछताछ फॉर्म</h2>
-    <form id="yatraForm">
-      <div class="form-group"><label for="name">आपका नाम (Your Name)</label><input id="name" autocomplete="name" placeholder="अपना नाम लिखें" required></div>
-      <div class="form-group"><label for="location">आप कहाँ से आ रहे हैं? (City/State)</label><input id="location" placeholder="जैसे: पटना, बिहार" required></div>
-      <div class="form-group"><label for="members">कुल कितने लोग हैं? (Total Members)</label><input id="members" type="number" min="1" max="10000" placeholder="जैसे: 40" required></div>
-      <div class="form-group"><label for="date">पुरी आने की तारीख (Date of Arrival)</label><input id="date" type="date" required></div>
-      <div class="form-group"><label>आपको कौन-कौन सी सुविधाएँ चाहिए?</label>
-        <div class="checkbox-group">
-          <div class="checkbox-item"><input type="checkbox" id="srv_room" value="होटल/धर्मशाला"><label for="srv_room">कमरे/हॉल</label></div>
-          <div class="checkbox-item"><input type="checkbox" id="srv_kitchen" value="किचन और गैस सिलेंडर"><label for="srv_kitchen">किचन + गैस</label></div>
-          <div class="checkbox-item"><input type="checkbox" id="srv_bus" value="बस/गाड़ी"><label for="srv_bus">गाड़ी/बस</label></div>
-          <div class="checkbox-item"><input type="checkbox" id="srv_food" value="भोजन/प्रसाद"><label for="srv_food">भोजन/प्रसाद</label></div>
+
+    <header>
+        <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+        <h1 id="t-main-title">🙏 जय जगन्नाथ! पुरी यात्रा सेवा</h1>
+        <p id="t-sub-title">बड़े ग्रुप, बस यात्रा और परिवारों के लिए पुरी में ठहरने व भोजन की व्यवस्था</p>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2 id="t-card1-title">क्या आप बड़े ग्रुप या बस के साथ पुरी आ रहे हैं?</h2>
+            <p id="t-card1-desc" style="font-size: 13px; color: #555;">कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे WhatsApp पर भेजने के लिए तैयार हो जाएगी। बुकिंग और उपलब्धता की पुष्टि बातचीत के बाद होगी।</p>
         </div>
-      </div>
-      <button type="submit" class="submit-btn">WhatsApp पर पूछताछ भेजें ➜</button>
-      <p class="small">फॉर्म भेजने पर WhatsApp खुलेगा। संदेश भेजने के लिए WhatsApp में Send दबाएँ।</p>
-    </form>
-  </section>
-  <button id="installBtn" class="install-btn" type="button">📲 मोबाइल में ऐप की तरह इंस्टॉल करें</button>
-</main>
-<a class="whatsapp-float" href="https://wa.me/917978155503?text=%E0%A4%9C%E0%A4%AF%20%E0%A4%9C%E0%A4%97%E0%A4%A8%E0%A4%A8%E0%A4%A5%2C%20%E0%A4%AE%E0%A5%81%E0%A4%9D%E0%A5%87%20%E0%A4%AA%E0%A5%81%E0%A4%B0%E0%A5%80%20%E0%A4%AF%E0%A4%BE%E0%A4%A4%E0%A5%8D%E0%A4%B0%E0%A4%BE%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%9A%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%8F%E0%A5%A4" target="_blank" rel="noopener">💬 WhatsApp करें</a>
-<footer><p>© 2026 पुरी यात्रा सेवा | आपकी सुखद यात्रा हमारा संकल्प</p><p>Contact: 7978155503</p></footer>
-<script>
-const form=document.getElementById('yatraForm');
-form.addEventListener('submit',function(event){
-  event.preventDefault();
-  const name=document.getElementById('name').value.trim();
-  const location=document.getElementById('location').value.trim();
-  const members=document.getElementById('members').value;
-  const date=document.getElementById('date').value;
-  const services=[];
-  ['srv_room','srv_kitchen','srv_bus','srv_food'].forEach(id=>{const el=document.getElementById(id);if(el.checked)services.push(el.value)});
-  const message=`*नई पुरी यात्रा पूछताछ*\\n\\n👤 *नाम:* ${name}\\n📍 *कहाँ से:* ${location}\\n👥 *लोग:* ${members} व्यक्ति\\n📅 *आने की तारीख:* ${date}\\n🛠️ *सुविधाएँ:* ${services.join(', ') || 'अभी चयन नहीं किया'}\\n`;
-  window.open('https://wa.me/917978155503?text='+encodeURIComponent(message),'_blank','noopener');
-});
-let installPrompt;
-const installBtn=document.getElementById('installBtn');
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();installPrompt=e;installBtn.style.display='block'});
-installBtn.addEventListener('click',async()=>{if(!installPrompt)return;installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;installBtn.style.display='none'});
-if('serviceWorker' in navigator && location.protocol.startsWith('http')){window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}))}
-</script>
+
+        <h2 style="font-size: 16px; margin-bottom: 12px; color: #444;" id="t-facilities-heading">हमारी मुख्य सुविधाएँ</h2>
+        
+        <div class="features-grid">
+            <div class="feature-box">
+                <h3 id="f1-title">🏨 होटल और धर्मशाला</h3>
+                <p id="f1-desc">बड़े समूहों के लिए हॉल या मंदिर/समुद्र के पास ठहरने के विकल्पों की जानकारी।</p>
+            </div>
+            <div class="feature-box">
+                <h3 id="f2-title">🍳 ग्रुप किचन और गैस</h3>
+                <p id="f2-desc">समूह के लिए बड़े बर्तन, गैस सिलेंडर, चूल्हा और किचन स्पेस की व्यवस्था के विकल्प।</p>
+            </div>
+            <div class="feature-box">
+                <h3 id="f3-title">🚌 बस और ट्रैवलर गाड़ी</h3>
+                <p id="f3-desc">पुरी स्टेशन से पिक-अप तथा कोणार्क, चिल्का और भुवनेश्वर घूमने के लिए वाहन की पूछताछ।</p>
+            </div>
+            <div class="feature-box">
+                <h3 id="f4-title">🍛 महाप्रसाद और कैटरिंग</h3>
+                <p id="f4-desc">श्री जगन्नाथ जी के महाप्रसाद या शुद्ध शाकाहारी भोजन के लिए पूछताछ करें।</p>
+            </div>
+        </div>
+
+        <div class="card">
+            <h2 style="text-align: center; color: #ff6600; margin-bottom: 15px;" id="form-heading">📝 निःशुल्क पूछताछ फॉर्म</h2>
+            
+            <div class="form-group">
+                <label id="l-name">आपका नाम (Your Name)</label>
+                <input type="text" id="name" placeholder="अपना नाम लिखें">
+            </div>
+
+            <div class="form-group">
+                <label id="l-city">आप कहाँ से आ रहे हैं? (City/State)</label>
+                <input type="text" id="city" placeholder="जैसे: पटना, बिहार">
+            </div>
+
+            <div class="form-group">
+                <label id="l-members">कुल कितने लोग हैं? (Total Members)</label>
+                <input type="number" id="members" placeholder="जैसे: 40">
+            </div>
+
+            <div class="form-group">
+                <label id="l-date">पुरी आने की तारीख (Date of Arrival)</label>
+                <input type="date" id="date">
+            </div>
+
+            <div class="form-group">
+                <label id="l-services-needed">आपको कौन-कौन सी सुविधाएँ चाहिए?</label>
+                <div class="checkbox-group">
+                    <label class="checkbox-label"><input type="checkbox" id="s-hotel"> <span id="c1">कमरे/हॉल</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="s-kitchen"> <span id="c2">किचन + गैस</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="s-vehicle"> <span id="c3">गाड़ी/बस</span></label>
+                    <label class="checkbox-label"><input type="checkbox" id="s-food"> <span id="c4">भोजन/प्रसाद</span></label>
+                </div>
+            </div>
+
+            <button class="btn-whatsapp" onclick="sendToWhatsApp()" id="whatsapp-btn">💬 WhatsApp पर पूछताछ भेजें ➜</button>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p id="footer-text">© 2026 पुरी यात्रा सेवा | आपकी सुखद यात्रा हमारा संकल्प</p>
+        <p style="margin-top: 5px;">Contact: 7978155503</p>
+    </div>
+
+    <script>
+        let currentLang = 'hi';
+
+        const translations = {
+            hi: {
+                langBtn: "English",
+                pageTitle: "जय जगन्नाथ! पुरी यात्रा सेवा | Puri Yatra Seva",
+                mainTitle: "🙏 जय जगन्नाथ! पुरी यात्रा सेवा",
+                subTitle: "बड़े ग्रुप, बस यात्रा और परिवारों के लिए पुरी में ठहरने व भोजन की व्यवस्था",
+                card1Title: "क्या आप बड़े ग्रुप या बस के साथ पुरी आ रहे हैं?",
+                card1Desc: "कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे WhatsApp पर भेजने के लिए तैयार हो जाएगी। बुकिंग और उपलब्धता की पुष्टि बातचीत के बाद होगी।",
+                facilitiesHeading: "हमारी मुख्य सुविधाएँ",
+                f1Title: "🏨 होटल और धर्मशाला",
+                f1Desc: "बड़े समूहों के लिए हॉल या मंदिर/समुद्र के पास ठहरने के विकल्पों की जानकारी।",
+                f2Title: "🍳 ग्रुप किचन और गैस",
+                f2Desc: "समूह के लिए बड़े बर्तन, गैस सिलेंडर, चूल्हा और किचन स्पेस की व्यवस्था के विकल्प।",
+                f3Title: "🚌 बस और ट्रैवलर गाड़ी",
+                f3Desc: "पुरी स्टेशन से पिक-अप तथा कोणार्क, चिल्का और भुवनेश्वर घूमने के लिए वाहन की पूछताछ।",
+                f4Title: "🍛 महाप्रसाद और कैटरिंग",
+                f4Desc: "श्री जगन्नाथ जी के महाप्रसाद या शुद्ध शाकाहारी भोजन के लिए पूछताछ करें।",
+                formHeading: "📝 निःशुल्क पूछताछ फॉर्म",
+                lName: "आपका नाम (Your Name)",
+                lCity: "आप कहाँ से आ रहे हैं? (City/State)",
+                lMembers: "कुल कितने लोग हैं? (Total Members)",
+                lDate: "पुरी आने की तारीख (Date of Arrival)",
+                lServicesNeeded: "आपको कौन-कौन सी सुविधाएँ चाहिए?",
+                c1: "कमरे/हॉल",
+                c2: "किचन + गैस",
+                c3: "गाड़ी/बस",
+                c4: "भोजन/प्रसाद",
+                whatsappBtn: "💬 WhatsApp पर पूछताछ भेजें ➜",
+                footerText: "© 2026 पुरी यात्रा सेवा | आपकी सुखद यात्रा हमारा संकल्प"
+            },
+            en: {
+                langBtn: "हिंदी",
+                pageTitle: "Jai Jagannath! Puri Yatra Seva",
+                mainTitle: "🙏 Jai Jagannath! Puri Yatra Seva",
+                subTitle: "Accommodation & Food Arrangements in Puri for Large Groups, Bus Tours & Families",
+                card1Title: "Are you visiting Puri with a large group or bus?",
+                card1Desc: "Fill out the form below for rooms, vehicles, group kitchen & gas cylinder details. Your enquiry will be prepared to send directly via WhatsApp. Booking & availability will be confirmed after discussion.",
+                facilitiesHeading: "Our Main Services",
+                f1Title: "🏨 Hotels & Dharmashala",
+                f1Desc: "Information on halls or stay options near the temple/beach for large groups.",
+                f2Title: "🍳 Group Kitchen & Gas",
+                f2Desc: "Options for large utensils, gas cylinders, stoves & kitchen space for groups.",
+                f3Title: "🚌 Bus & Traveler Vehicles",
+                f3Desc: "Enquiries for pickup from Puri station and sightseeing in Konark, Chilika & Bhubaneswar.",
+                f4Title: "🍛 Mahaprasad & Catering",
+                f4Desc: "Enquire for Lord Jagannath Mahaprasad or pure vegetarian food.",
+                formHeading: "📝 Free Enquiry Form",
+                lName: "Your Name",
+                lCity: "City / State (Where are you coming from?)",
+                lMembers: "Total Members",
+                lDate: "Date of Arrival in Puri",
+                lServicesNeeded: "What services do you need?",
+                c1: "Rooms / Hall",
+                c2: "Kitchen + Gas",
+                c3: "Vehicle / Bus",
+                c4: "Food / Prasad",
+                whatsappBtn: "💬 Send Enquiry on WhatsApp ➜",
+                footerText: "© 2026 Puri Yatra Seva | Your Pleasant Journey Our Commitment"
+            }
+        };
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'hi' ? 'en' : 'hi';
+            const t = translations[currentLang];
+
+            document.getElementById('lang-btn').innerText = t.langBtn;
+            document.getElementById('page-title').innerText = t.pageTitle;
+            document.getElementById('t-main-title').innerText = t.mainTitle;
+            document.getElementById('t-sub-title').innerText = t.subTitle;
+            document.getElementById('t-card1-title').innerText = t.card1Title;
+            document.getElementById('t-card1-desc').innerText = t.card1Desc;
+            document.getElementById('t-facilities-heading').innerText = t.facilitiesHeading;
+            document.getElementById('f1-title').innerText = t.f1Title;
+            document.getElementById('f1-desc').innerText = t.f1Desc;
+            document.getElementById('f2-title').innerText = t.f2Title;
+            document.getElementById('f2-desc').innerText = t.f2Desc;
+            document.getElementById('f3-title').innerText = t.f3Title;
+            document.getElementById('f3-desc').innerText = t.f3Desc;
+            document.getElementById('f4-title').innerText = t.f4Title;
+            document.getElementById('f4-desc').innerText = t.f4Desc;
+            document.getElementById('form-heading').innerText = t.formHeading;
+            document.getElementById('l-name').innerText = t.lName;
+            document.getElementById('l-city').innerText = t.lCity;
+            document.getElementById('l-members').innerText = t.lMembers;
+            document.getElementById('l-date').innerText = t.lDate;
+            document.getElementById('l-services-needed').innerText = t.lServicesNeeded;
+            document.getElementById('c1').innerText = t.c1;
+            document.getElementById('c2').innerText = t.c2;
+            document.getElementById('c3').innerText = t.c3;
+            document.getElementById('c4').innerText = t.c4;
+            document.getElementById('whatsapp-btn').innerText = t.whatsappBtn;
+            document.getElementById('footer-text').innerText = t.footerText;
+        }
+
+        function sendToWhatsApp() {
+            const name = document.getElementById('name').value;
+            const city = document.getElementById('city').value;
+            const members = document.getElementById('members').value;
+            const date = document.getElementById('date').value;
+
+            let services = [];
+            if(document.getElementById('s-hotel').checked) services.push(currentLang === 'hi' ? 'कमरे/हॉल' : 'Rooms/Hall');
+            if(document.getElementById('s-kitchen').checked) services.push(currentLang === 'hi' ? 'किचन + गैस' : 'Kitchen + Gas');
+            if(document.getElementById('s-vehicle').checked) services.push(currentLang === 'hi' ? 'गाड़ी/बस' : 'Vehicle/Bus');
+            if(document.getElementById('s-food').checked) services.push(currentLang === 'hi' ? 'भोजन/प्रसाद' : 'Food/Prasad');
+
+            let message = currentLang === 'hi' 
+                ? `नमस्ते, मुझे पुरी यात्रा के लिए जानकारी चाहिए:%0A- नाम: ${name}%0A- शहर: ${city}%0A- कुल लोग: ${members}%0A- आने की तारीख: ${date}%0A- आवश्यकता: ${services.join(', ')}`
+                : `Hello, I need information for Puri Yatra:%0A- Name: ${name}%0A- City: ${city}%0A- Total Members: ${members}%0A- Date of Arrival: ${date}%0A- Requirements: ${services.join(', ')}`;
+
+            let whatsappUrl = `https://wa.me/917978155503?text=${message}`;
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
 </body>
 </html>
