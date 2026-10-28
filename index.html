@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="hi">
 <head>
@@ -10,12 +11,17 @@
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         body { background-color: #f8f9fa; color: #333; line-height: 1.6; }
         header { background: linear-gradient(135deg, #ff8c00, #ff4500); color: white; padding: 20px 15px; text-align: center; position: relative; }
-        .lang-switch { position: absolute; top: 15px; right: 15px; background: white; color: #ff4500; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
-        header h1 { font-size: 24px; margin-bottom: 8px; }
+        .lang-switch { position: absolute; top: 15px; right: 15px; background: white; color: #ff4500; border: none; padding: 6px 12px; border-radius: 20px; font-weight: bold; cursor: pointer; font-size: 14px; box-shadow: 0 2px 5px rgba(0,0,0,0.2); z-index: 10; }
+        .banner-container { width: 100%; max-width: 800px; margin: 15px auto; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); background: white; }
+        .banner-container img { width: 100%; height: auto; display: block; }
+        header h1 { font-size: 24px; margin-top: 15px; margin-bottom: 8px; }
         header p { font-size: 14px; opacity: 0.95; }
         .container { max-width: 600px; margin: 20px auto; padding: 0 15px; }
         .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border-left: 5px solid #ff6600; }
         .card h2 { font-size: 18px; color: #222; margin-bottom: 12px; }
+        .alert-card { background: #fff3cd; border-left: 5px solid #ffc107; border-radius: 12px; padding: 18px; margin-bottom: 20px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .alert-card h2 { color: #856404; font-size: 17px; margin-bottom: 10px; }
+        .alert-card p { color: #533f03; font-size: 13px; line-height: 1.5; }
         .features-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px; }
         .feature-box { background: white; padding: 15px; border-radius: 10px; text-align: center; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border: 1px solid #eee; }
         .feature-box h3 { font-size: 15px; color: #333; margin-bottom: 5px; }
@@ -26,6 +32,7 @@
         .checkbox-group { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; }
         .checkbox-label { font-size: 13px; display: flex; align-items: center; gap: 6px; cursor: pointer; }
         .btn-whatsapp { display: block; width: 100%; background-color: #25D366; color: white; text-align: center; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); margin-top: 20px; }
+        .btn-call { display: block; width: 100%; background-color: #007bff; color: white; text-align: center; padding: 14px; border-radius: 8px; font-size: 16px; font-weight: bold; text-decoration: none; border: none; cursor: pointer; box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); margin-top: 10px; }
         .footer { text-align: center; padding: 20px; font-size: 12px; color: #777; background: #222; color: #aaa; margin-top: 30px; }
     </style>
 </head>
@@ -33,14 +40,25 @@
 
     <header>
         <button class="lang-switch" onclick="toggleLanguage()" id="lang-btn">English</button>
+        
+        <div class="banner-container">
+            <img src="image_5b54524.jpg" alt="Puri Yatra Darshan Banner">
+        </div>
+
         <h1 id="t-main-title">🙏 जय जगन्नाथ! पुरी यात्रा सेवा</h1>
         <p id="t-sub-title">बड़े ग्रुप, बस यात्रा और परिवारों के लिए पुरी में ठहरने व भोजन की व्यवस्था</p>
     </header>
 
     <div class="container">
+        <!-- दलालों से सावधान रहने की चेतावनी -->
+        <div class="alert-card">
+            <h2 id="t-alert-title">⚠️ दलालों और फ्रॉड से सावधान!</h2>
+            <p id="t-alert-desc">पुरी आने पर किसी भी अनजान व्यक्ति या दलाल के चक्कर में न पड़ें। किसी भी प्रकार की बुकिंग, कमरे, गाड़ी या महाप्रसाद के लिए <b>केवल सीधे हमारे ऑफिशियल नंबर (7978155503) पर कॉल या WhatsApp करके ही कन्फर्म करें।</b> किसी अन्य व्यक्ति को पैसे न दें।</p>
+        </div>
+
         <div class="card">
             <h2 id="t-card1-title">क्या आप बड़े ग्रुप या बस के साथ पुरी आ रहे हैं?</h2>
-            <p id="t-card1-desc" style="font-size: 13px; color: #555;">कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे WhatsApp पर भेजने के लिए तैयार हो जाएगी। बुकिंग और उपलब्धता की पुष्टि बातचीत के बाद होगी।</p>
+            <p id="t-card1-desc" style="font-size: 13px; color: #555;">कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे हमारे ऑफिशियल WhatsApp पर आ जाएगी।</p>
         </div>
 
         <h2 style="font-size: 16px; margin-bottom: 12px; color: #444;" id="t-facilities-heading">हमारी मुख्य सुविधाएँ</h2>
@@ -97,13 +115,14 @@
                 </div>
             </div>
 
-            <button class="btn-whatsapp" onclick="sendToWhatsApp()" id="whatsapp-btn">💬 WhatsApp पर पूछताछ भेजें ➜</button>
+            <button class="btn-whatsapp" onclick="sendToWhatsApp()" id="whatsapp-btn">💬 WhatsApp पर सीधे बात करें ➜</button>
+            <a href="tel:7978155503" class="btn-call" id="call-btn">📞 सीधा फोन कॉल करें (Call Now)</a>
         </div>
     </div>
 
     <div class="footer">
         <p id="footer-text">© 2026 पुरी यात्रा सेवा | आपकी सुखद यात्रा हमारा संकल्प</p>
-        <p style="margin-top: 5px;">Contact: 7978155503</p>
+        <p style="margin-top: 5px;">Official Contact / WhatsApp: 7978155503</p>
     </div>
 
     <script>
@@ -115,8 +134,10 @@
                 pageTitle: "जय जगन्नाथ! पुरी यात्रा सेवा | Puri Yatra Seva",
                 mainTitle: "🙏 जय जगन्नाथ! पुरी यात्रा सेवा",
                 subTitle: "बड़े ग्रुप, बस यात्रा और परिवारों के लिए पुरी में ठहरने व भोजन की व्यवस्था",
+                alertTitle: "⚠️ दलालों और फ्रॉड से सावधान!",
+                alertDesc: "पुरी आने पर किसी भी अनजान व्यक्ति या दलाल के चक्कर में न पड़ें। किसी भी प्रकार की बुकिंग, कमरे, गाड़ी या महाप्रसाद के लिए <b>केवल सीधे हमारे ऑफिशियल नंबर (7978155503) पर कॉल या WhatsApp करके ही कन्फर्म करें।</b> किसी अन्य व्यक्ति को पैसे न दें।",
                 card1Title: "क्या आप बड़े ग्रुप या बस के साथ पुरी आ रहे हैं?",
-                card1Desc: "कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे WhatsApp पर भेजने के लिए तैयार हो जाएगी। बुकिंग और उपलब्धता की पुष्टि बातचीत के बाद होगी।",
+                card1Desc: "कमरे, गाड़ी, समूह के लिए किचन और गैस सिलेंडर की जानकारी के लिए नीचे फॉर्म भरें। आपकी पूछताछ सीधे हमारे ऑफिशियल WhatsApp पर आ जाएगी।",
                 facilitiesHeading: "हमारी मुख्य सुविधाएँ",
                 f1Title: "🏨 होटल और धर्मशाला",
                 f1Desc: "बड़े समूहों के लिए हॉल या मंदिर/समुद्र के पास ठहरने के विकल्पों की जानकारी।",
@@ -136,7 +157,8 @@
                 c2: "किचन + गैस",
                 c3: "गाड़ी/बस",
                 c4: "भोजन/प्रसाद",
-                whatsappBtn: "💬 WhatsApp पर पूछताछ भेजें ➜",
+                whatsappBtn: "💬 WhatsApp पर सीधे बात करें ➜",
+                callBtn: "📞 सीधा फोन कॉल करें (Call Now)",
                 footerText: "© 2026 पुरी यात्रा सेवा | आपकी सुखद यात्रा हमारा संकल्प"
             },
             en: {
@@ -144,8 +166,10 @@
                 pageTitle: "Jai Jagannath! Puri Yatra Seva",
                 mainTitle: "🙏 Jai Jagannath! Puri Yatra Seva",
                 subTitle: "Accommodation & Food Arrangements in Puri for Large Groups, Bus Tours & Families",
+                alertTitle: "⚠️ Beware of Brokers & Frauds!",
+                alertDesc: "Do not fall into the trap of any unknown person or broker upon reaching Puri. For any bookings, rooms, vehicles, or Mahaprasad, <b>only confirm by calling or messaging our official number directly (7978155503).</b> Do not pay anyone else.",
                 card1Title: "Are you visiting Puri with a large group or bus?",
-                card1Desc: "Fill out the form below for rooms, vehicles, group kitchen & gas cylinder details. Your enquiry will be prepared to send directly via WhatsApp. Booking & availability will be confirmed after discussion.",
+                card1Desc: "Fill out the form below for rooms, vehicles, group kitchen & gas cylinder details. Your enquiry will come directly to our official WhatsApp.",
                 facilitiesHeading: "Our Main Services",
                 f1Title: "🏨 Hotels & Dharmashala",
                 f1Desc: "Information on halls or stay options near the temple/beach for large groups.",
@@ -165,7 +189,8 @@
                 c2: "Kitchen + Gas",
                 c3: "Vehicle / Bus",
                 c4: "Food / Prasad",
-                whatsappBtn: "💬 Send Enquiry on WhatsApp ➜",
+                whatsappBtn: "💬 Talk Directly on WhatsApp ➜",
+                callBtn: "📞 Direct Phone Call (Call Now)",
                 footerText: "© 2026 Puri Yatra Seva | Your Pleasant Journey Our Commitment"
             }
         };
@@ -178,6 +203,8 @@
             document.getElementById('page-title').innerText = t.pageTitle;
             document.getElementById('t-main-title').innerText = t.mainTitle;
             document.getElementById('t-sub-title').innerText = t.subTitle;
+            document.getElementById('t-alert-title').innerText = t.alertTitle;
+            document.getElementById('t-alert-desc').innerHTML = t.alertDesc;
             document.getElementById('t-card1-title').innerText = t.card1Title;
             document.getElementById('t-card1-desc').innerText = t.card1Desc;
             document.getElementById('t-facilities-heading').innerText = t.facilitiesHeading;
@@ -200,6 +227,7 @@
             document.getElementById('c3').innerText = t.c3;
             document.getElementById('c4').innerText = t.c4;
             document.getElementById('whatsapp-btn').innerText = t.whatsappBtn;
+            document.getElementById('call-btn').innerText = t.callBtn;
             document.getElementById('footer-text').innerText = t.footerText;
         }
 
@@ -216,8 +244,8 @@
             if(document.getElementById('s-food').checked) services.push(currentLang === 'hi' ? 'भोजन/प्रसाद' : 'Food/Prasad');
 
             let message = currentLang === 'hi' 
-                ? `नमस्ते, मुझे पुरी यात्रा के लिए जानकारी चाहिए:%0A- नाम: ${name}%0A- शहर: ${city}%0A- कुल लोग: ${members}%0A- आने की तारीख: ${date}%0A- आवश्यकता: ${services.join(', ')}`
-                : `Hello, I need information for Puri Yatra:%0A- Name: ${name}%0A- City: ${city}%0A- Total Members: ${members}%0A- Date of Arrival: ${date}%0A- Requirements: ${services.join(', ')}`;
+                ? `नमस्ते, मुझे पुरी यात्रा के लिए जानकारी चाहिए (दलालों से सावधान होकर सीधे संपर्क किया है):%0A- नाम: ${name}%0A- शहर: ${city}%0A- कुल लोग: ${members}%0A- आने की तारीख: ${date}%0A- आवश्यकता: ${services.join(', ')}`
+                : `Hello, I need information for Puri Yatra (Contacting directly avoiding brokers):%0A- Name: ${name}%0A- City: ${city}%0A- Total Members: ${members}%0A- Date of Arrival: ${date}%0A- Requirements: ${services.join(', ')}`;
 
             let whatsappUrl = `https://wa.me/917978155503?text=${message}`;
             window.open(whatsappUrl, '_blank');
